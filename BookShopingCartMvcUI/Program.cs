@@ -1,4 +1,5 @@
 using BookShopingCartMvcUI.Data;
+using BookShopingCartMvcUI.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
     .AddDefaultTokenProviders();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IHomeRepository, HomeRepository>();
+builder.Services.AddTransient<ICartRepository, CartRepository>();
 
 var app = builder.Build();
 //using (var scope = app.Services.CreateScope())
@@ -50,5 +53,5 @@ app.MapRazorPages();
 app.Run();
 
 
-//https://www.youtube.com/watch?v=Kcet2AXKZfA&list=PLP8UhDwXI7f_8r2Rbt7GNwf7eXZqUu_p4&index=3
+//https://www.youtube.com/watch?v=JPFlSXejgKc&list=PLP8UhDwXI7f_8r2Rbt7GNwf7eXZqUu_p4&index=5
 
