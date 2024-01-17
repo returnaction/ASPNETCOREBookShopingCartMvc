@@ -21,10 +21,10 @@ builder.Services.AddTransient<IHomeRepository, HomeRepository>();
 builder.Services.AddTransient<ICartRepository, CartRepository>();
 
 var app = builder.Build();
-//using (var scope = app.Services.CreateScope())
-//{
-//    await DbSeeder.SeedDefaultData(scope.ServiceProvider);
-//}
+using (var scope = app.Services.CreateScope())
+{
+    await DbSeeder.SeedDefaultData(scope.ServiceProvider);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -53,5 +53,6 @@ app.MapRazorPages();
 app.Run();
 
 
-//https://www.youtube.com/watch?v=JPFlSXejgKc&list=PLP8UhDwXI7f_8r2Rbt7GNwf7eXZqUu_p4&index=5
 
+
+//https://www.youtube.com/watch?v=Xuz9N7QWd_Q&list=PLP8UhDwXI7f_8r2Rbt7GNwf7eXZqUu_p4&index=7

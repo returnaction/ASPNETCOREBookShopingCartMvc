@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShopingCartMvcUI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240116050334_Init")]
+    [Migration("20240117205036_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -76,8 +76,8 @@ namespace BookShopingCartMvcUI.Migrations
                     b.Property<int>("ShoppingCartId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShoppingCart_id")
-                        .HasColumnType("int");
+                    b.Property<double>("UnitPrice")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -422,7 +422,7 @@ namespace BookShopingCartMvcUI.Migrations
                         .IsRequired();
 
                     b.HasOne("BookShopingCartMvcUI.Models.ShoppingCart", "ShoppingCart")
-                        .WithMany()
+                        .WithMany("CartDetails")
                         .HasForeignKey("ShoppingCartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -528,6 +528,11 @@ namespace BookShopingCartMvcUI.Migrations
             modelBuilder.Entity("BookShopingCartMvcUI.Models.Order", b =>
                 {
                     b.Navigation("OrderDetail");
+                });
+
+            modelBuilder.Entity("BookShopingCartMvcUI.Models.ShoppingCart", b =>
+                {
+                    b.Navigation("CartDetails");
                 });
 #pragma warning restore 612, 618
         }
