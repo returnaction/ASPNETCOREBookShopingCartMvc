@@ -8,5 +8,6 @@ namespace BookShopingCartMvcUI.Repositories
         Task<ShoppingCart> GetUserCart();
         Task<int> RemoveItem(int bookId);
         Task<int> GetCartItemCount(string userId = "");
+        Task<bool> DoCheckout();
     }
 }
